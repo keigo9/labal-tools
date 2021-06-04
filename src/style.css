@@ -1,0 +1,133 @@
+*{
+    text-align:center;
+}
+
+/* input form */
+.your_name form,.my_name form,.button{
+    display:inline-block;
+}
+
+#zipCode p,#zipCode2 p{
+    display:inline-block;
+} 
+
+.vertical{
+    writing-mode:tb-rl;
+    text-orientation:upright;
+}
+
+.your,.my{
+    width:50%;
+    margin-left:auto;
+}
+
+
+/* postcode */
+.postcard{
+    width:300px;
+    height:500px;
+    margin:0px auto;
+    border:1px solid rgba(0,0,0,0.3);
+    float:left;
+    position:relative;
+    left:20%;   
+}
+
+
+.output-yourZipcode{
+    position:absolute;
+    top:3px;
+    right:0px;
+    letter-spacing:11.3px;
+}
+
+.borders{
+    position:absolute;
+    top:5px;
+    right:5px;
+    color:red;
+}
+
+.border{
+    height:15px;
+    width:15px;
+    border:1px solid  red;
+    display:inline-block;
+}
+
+.output_yourAddress{
+    position:absolute;
+    bottom:40px;
+    right:20px;
+    font-size:20px;
+}
+.output_yourAddress2{
+    position:absolute;
+    bottom:40px;
+    right:40px;
+    font-size:20px;
+}
+
+.output_yourName{
+    position:absolute;
+    bottom:40px;
+    right:30%;
+    font-weight:bold;
+    font-size:25px;
+}
+
+.output-myZipcode{
+    position:absolute;
+    bottom:8px;
+    left:7px;
+    font-size:13px;
+    letter-spacing:5.3px;
+}
+
+.borders2{
+    position:absolute;
+    bottom:5px;
+    left:5px;
+    color:red;
+    letter-spacing:-5px;
+}
+
+.border2{
+    height:12px;
+    width:12px;
+    border:1px dashed  red;
+    display:inline-block;
+}
+
+.output_myAddress{
+    position:absolute;
+    bottom:40px;
+    left:50px;
+    font-size:13px;
+}
+.output_myAddress2{
+    position:absolute;
+    bottom:40px;
+    left:30px;
+    font-size:13px;
+}
+
+.output_myName{
+    position:absolute;
+    bottom:40px;
+    left:10px;
+    font-size:13px;
+}
+
+.stmps{
+    position:absolute;
+    top:5px;
+    left:3px;
+}
+
+.stmps img{
+    width:80px;
+    height:80px;
+}
+
+

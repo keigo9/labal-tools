@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DBP レポート</title>
+    <link rel="stylesheet" type="text/css" href="">
+</head>
+<body>
+    <h1 style="text-align:center;">DBP　レポート</h1>
+    
+    <h2 style="margin-top:50px;">作成するソフトウェアの概要</h2>
+    <p>はがきの宛名と差出人の情報を入力することで、はがきのラベルを作成してくるツールである。<br/>郵便番号から自動で住所を検索することができる。</p>
+    <img src="img/top.png" alt="説明">
+    
+    <h2>設計方針</h2>
+    <p>環境：Windows10<br/>
+       XAMPP /v7.3.18<br>
+       Webサーバー:Apache /v2.4.43<br/>
+       使用言語:PHP /v7.3.18　 HTML・CSS<br/>
+       SQL:PostgreSQL /v12.2<br/>
+    </p>
+    <h4>住所検索機能</h4>
+    <img src="img/flow.png" alt="flow">
+    
+    <h2>プログラム説明</h2>
+    <p>formのaction属性として住所を送信します。
+        <br/>その際にpattern属性を用いて正規表現7文字で入力すること指定します。
+        <br/>*ただし、一部ブラウザによって正規表現が使えない場合があります。
+    </p>
+    <h5>index.php</h5>
+    <img src="img/program1.png" alt="program">
+    <p>index.phpのフォームから送られてきた郵便番号を処理します。
+        <br/>if文で値が数字であること確認します。(pattern属性で値が空ではないことは確定しているのですが、ブラウザ対応していない場合もあるので一応値がセットされているかも確認します。)
+        <br/>入力された郵便番号と一致する列をpostalcodeデータベーステーブルから取り出して、sessionに保存して、index.phpに移動します。
+    </p>
+    <h5>zipcode_do.php</h5>
+    <img src="img/program2.png" alt="program">
+    <p>先ほどの処理でsessionに保存した住所をはがきに出力します。</p>
+    <h5>index.php</h5>
+    <img src="img/program3.png" alt="program">
+
+    <h2>実行結果</h2>
+    <p>1.宛先情報情報入力欄の郵便番号にはがきを送りたい相手の郵便番号を入力する。
+        <br/>住所検索ボタンを押す。
+    </p>
+    <img src="img/result1.png" alt="result">
+    <p>2.郵便番号に該当する県や市の住所情報をはがきの欄に自動で入力してくれる。</p>
+    <img src="img/result2.png" alt="result">
+    <p>3.以上同様に差出人情報の住所も検索する。
+        <br/>名前や番地の情報も右側入力欄にて入力する。
+    </p>
+    <img src="img/result.png" alt="result">
+    
+    <h2>考察</h2>
+    <p>このアプリケーションの改善点としては、住所検索ボタンを押すとセッションに保存していない、名前や住所2の情報が消えてしまいもう一度入力しなければいけなくなってしまうことである。
+        なので、使用する際には住所検索を宛名情報、差出人情報ともに実行してから名前などを入力しなければならない。
+        htmlのformのサーバーへの値の受け渡しなどがうまくいかなく、今回は時間の関係で実装できなかったが、入力された名前と住所を別のデーターベーステーブルに「住所一覧」として保存して、
+        一度登録された住所セットを一覧から取り出せるようにして入力の手間を省くことを考えたが、そのテーブルにアクセスする際にユーザーごとにテーブルを分けなければ個人情報が流失してしまうという問題が浮上した。
+        以上問題より、今回は技術的にもここまでの実装で終了とする。
+    </p>
+</body>
+</html>
